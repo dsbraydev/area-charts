@@ -12,6 +12,41 @@ import { curveCardinal } from "d3-shape";
 import { tradingData, ChartProps } from "./data";
 
 const cardinal = curveCardinal.tension(0.2);
+const CustomTooltip = ({ active, payload, label }: any) => {
+  if (!active || !payload || !payload.length) return null;
+
+  return (
+    <div
+      style={{
+        backgroundColor: "#404040",
+        color: "#fff",
+        padding: "10px",
+        borderRadius: "8px",
+        width: "200px",
+      }}
+    >
+      <p style={{ margin: 0 }} className="flex justify-between">
+        You:{" "}
+        <span style={{ fontWeight: "bold" }}>
+          {formatValue(payload[0].value)}
+        </span>
+      </p>
+      <p style={{ margin: 0 }} className="flex justify-between">
+        Average user:{" "}
+        <span style={{ fontWeight: "bold" }}>
+          {formatValue(payload[1].value)}
+        </span>
+      </p>
+    </div>
+  );
+};
+
+// optional helper function
+const formatValue = (val: number) => {
+  if (val >= 1_000_000) return `${(val / 1_000_000).toFixed(1)}m`;
+  if (val >= 1_000) return `${(val / 1_000).toFixed(0)}k`;
+  return val;
+};
 
 export default function Chart({ timeframe }: ChartProps) {
   return (
@@ -61,7 +96,7 @@ export default function Chart({ timeframe }: ChartProps) {
             return value;
           }}
         />
-        <Tooltip contentStyle={{ backgroundColor: "#222", color: "#fff" }} />
+        <Tooltip content={<CustomTooltip />} />
         {/* Area with Gradient Fill (Green to Black) */}
         <Area
           type={cardinal}

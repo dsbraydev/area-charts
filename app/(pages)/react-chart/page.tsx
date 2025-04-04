@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Chart from "./chart";
 import Icon from "../../../public/icon.png";
 import Image from "next/image";
+
 const TradingVolumeChart = () => {
   const [timeframe, setTimeframe] = useState<"7D" | "30D" | "90D">("7D");
 
