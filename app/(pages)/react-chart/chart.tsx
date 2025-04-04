@@ -18,7 +18,7 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   return (
     <div
       style={{
-        backgroundColor: "#404040",
+        backgroundColor: "#4040",
         color: "#fff",
         padding: "10px",
         borderRadius: "8px",
