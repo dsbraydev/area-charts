@@ -52,11 +52,11 @@ const TradingVolumeChart = () => {
       <div className="flex gap-4 items-center">
         <div className="flex gap-4 items-center">
           <div className="h-[2px] w-6 bg-[#2EFEAE]" />
-          <p>Your</p>
+          <p className="text-xs text-[#ffffffb3]">Your</p>
         </div>
         <div className="flex gap-4 items-center">
           <div className="h-[2px] w-6 bg-[#CCC]" />
-          <p>Average User</p>
+          <p className="text-xs text-[#ffffffb3]">Average User</p>
         </div>
       </div>
     </div>
