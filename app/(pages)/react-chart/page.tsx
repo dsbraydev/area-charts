@@ -11,6 +11,7 @@ import {
   CartesianGrid,
 } from "recharts";
 import { curveCardinal } from "d3-shape";
+import Link from "next/link";
 
 // Trading Data
 const tradingData = {
@@ -49,26 +50,28 @@ const TradingVolumeChart = () => {
   const [timeframe, setTimeframe] = useState<"7D" | "30D" | "90D">("7D");
 
   return (
-    <div style={{ textAlign: "center" }}>
-      {/* Buttons to switch timeframe */}
-      <div style={{ marginBottom: 10 }}>
-        {["7D", "30D", "90D"].map((t) => (
-          <button
-            key={t}
-            onClick={() => setTimeframe(t as "7D" | "30D" | "90D")}
-            style={{
-              margin: "0 5px",
-              padding: "6px 12px",
-              backgroundColor: timeframe === t ? "#00ff99" : "transparent",
-              border: "1px solid #00ff99",
-              color: "#fff",
-              borderRadius: "5px",
-              cursor: "pointer",
-            }}
-          >
-            {t}
-          </button>
-        ))}
+    <div style={{ textAlign: "center" }} className="p-5">
+      <div className="flex justify-between">
+        <Link href="/">BACK</Link>
+        <div style={{ marginBottom: 10 }}>
+          {["7D", "30D", "90D"].map((t) => (
+            <button
+              key={t}
+              onClick={() => setTimeframe(t as "7D" | "30D" | "90D")}
+              style={{
+                margin: "0 5px",
+                padding: "6px 12px",
+                backgroundColor: timeframe === t ? "#00ff99" : "transparent",
+                border: "1px solid #00ff99",
+                color: "#fff",
+                borderRadius: "5px",
+                cursor: "pointer",
+              }}
+            >
+              {t}
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Responsive Chart */}
