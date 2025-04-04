@@ -9,7 +9,7 @@ const TradingVolumeChart = () => {
 
   return (
     <div
-      className="rounded-lg border-[1px] h-[496px] p-6 flex flex-col gap-5 m-6 max-w-[1036px]"
+      className="rounded-lg border-[1px] h-[496px] p-6 flex flex-col gap-5 m-6 max-w-[1036px] bg-black"
       style={{
         backgroundColor: "rgba(255, 255, 255, 0.06)",
         borderColor: "rgba(255, 255, 255, 0.08)",
