@@ -45,9 +45,16 @@ export default function Chart({ timeframe }: ChartProps) {
           </linearGradient>
         </defs>
         rgba(0, 165, 101, 0.10) 0%
-        <XAxis dataKey="date" tick={{ fill: "#aaa" }} />
+        <XAxis
+          dataKey="date"
+          tick={{ fill: "#aaa", fontSize: "12px" }}
+          tickLine={false}
+          tickMargin={12}
+        />
         <YAxis
-          tick={{ fill: "#aaa" }}
+          tickLine={false}
+          tick={{ fill: "#aaa", fontSize: "12px" }}
+          tickMargin={12}
           tickFormatter={(value) => {
             if (value >= 1_000_000) return `${(value / 1_000_000).toFixed(1)}m`;
             if (value >= 1_000) return `${(value / 1_000).toFixed(0)}k`;
