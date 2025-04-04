@@ -6,19 +6,23 @@ import {
   Tooltip,
   ResponsiveContainer,
   CartesianGrid,
+  TooltipProps,
 } from "recharts";
 import { curveCardinal } from "d3-shape";
 
 import { tradingData, ChartProps } from "./data";
 
 const cardinal = curveCardinal.tension(0.2);
-const CustomTooltip = ({ active, payload, label }: any) => {
-  if (!active || !payload || !payload.length) return null;
+const CustomTooltip: React.FC<TooltipProps<number, string>> = ({
+  active,
+  payload,
+}) => {
+  if (!active || !payload || payload.length < 2) return null;
 
   return (
     <div
       style={{
-        backgroundColor: "#4040",
+        backgroundColor: "#404040", // Fixed incorrect color value
         color: "#fff",
         padding: "10px",
         borderRadius: "8px",
@@ -28,13 +32,17 @@ const CustomTooltip = ({ active, payload, label }: any) => {
       <p style={{ margin: 0 }} className="flex justify-between">
         You:{" "}
         <span style={{ fontWeight: "bold" }}>
-          {formatValue(payload[0].value)}
+          {payload[0]?.value !== undefined
+            ? formatValue(payload[0].value)
+            : "-"}
         </span>
       </p>
       <p style={{ margin: 0 }} className="flex justify-between">
         Average user:{" "}
         <span style={{ fontWeight: "bold" }}>
-          {formatValue(payload[1].value)}
+          {payload[1]?.value !== undefined
+            ? formatValue(payload[1].value)
+            : "-"}
         </span>
       </p>
     </div>
